@@ -12,3 +12,13 @@ pom.xml.asc
 .lein-failures
 .nrepl-port
 .cpcache/
+.clojure/
+out/
+*.log
+*.tmp
+*.swp
+.vscode/
+.idea/
+*.iml
+.clj-kondo/
+.lsp/
