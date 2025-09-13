@@ -9,7 +9,7 @@
   (counter/get-counter-number! (d/db conn)))
 
 (defn reset-counter-value []
-  (counter/reset-counter! (d/db conn)))
+  (counter/reset-counter! conn))
 
 (defn add-counter-value []
   (let [current (get-counter-value)

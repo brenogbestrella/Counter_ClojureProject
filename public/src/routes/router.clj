@@ -16,7 +16,7 @@
    (ring/router
     [["/favicon.ico" {:get (fn [_] {:status 204})}]
      ["/counter"
-      ["/get" {:get (fn [_] (response {:value (controller/get-counter-value)}))}]
+      ["/count" {:get (fn [_] (response {:value (controller/get-counter-value)}))}]
       ["/increment" {:put (fn [_] (response {:value (controller/add-counter-value)}))}]
       ["/reset" {:delete (fn[_] (response {:value (controller/reset-counter-value)}))}]]])))
 

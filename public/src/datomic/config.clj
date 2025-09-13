@@ -24,15 +24,15 @@
     (println "Banco de dados 'counters' criado.")
     
     (d/transact conn {:tx-data counters-schema})
-    (println "Esquema transacionado.")
+    (println "Esquema criado.")
 
     (when-not (d/pull (d/db conn) [:counters/value] [:counters/id "main"])
       (d/transact conn {:tx-data [{:counters/id "main"
                                    :counters/value 0}]}))
-    (println "Valor inicial '0' transacionado.")
+    (println "Valor inicial '0' criado.")
 
     (catch Exception e
-      (println "Banco de dados já existe ou erro na transação:" (.getMessage e)))))
+      (println "Banco de dados já existe ou erro na criação:" (.getMessage e)))))
 
 (defn delete-database []
   (d/delete-database client {:db-name "counters"}))
