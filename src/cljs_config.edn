@@ -1,0 +1,4 @@
+{:output-to "public/js/main.js"
+ :asset-path "/js"
+ :optimizations :none
+ :pretty-print true}
