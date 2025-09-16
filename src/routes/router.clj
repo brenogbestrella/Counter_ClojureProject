@@ -32,5 +32,5 @@
 
 (defn -main []
   (init/init-db!)
-  (println "Servidor de Backend rodando em http://localhost:3000")
+  (println "Backend running on http://localhost:3000")
   (run-jetty app {:port 3000 :join? false}))

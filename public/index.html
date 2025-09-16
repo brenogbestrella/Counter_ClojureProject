@@ -5,31 +5,55 @@
   <title>Counter</title>
 </head>
 <body>
-  <div id="app">
-    <h1>COUNTER</h1>
-    <p id="counter"></p>
-  </div>
+  <div id="app"></div>
   <script src="/js/main.js"></script>
 </body>
 <style>
-      body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;      
-        flex-direction: column;   
-        font-family: sans-serif;
-      }
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;      
+    flex-direction: column;   
+    font-family: sans-serif;
+    text-align: center; 
+  }
 
-      h1 {
-        margin: 0 0 20px 0; 
-      }
+  h1 {
+    margin: 0 0 10px 0; 
+  }
 
-      p#counter {
-        font-size: 2rem;
-        margin: 0;
-      }
+  p#counter {
+    font-size: 2rem;
+    margin: 0 0 20px 0;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center; 
+    gap: 30px;               
+  }
+
+  button {
+    padding: 6px 12px;      
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    transition: background-color 0.4s;
+  }
+
+  button:hover {
+    background-color: #e0e0e0;
+  }
+
+  button:active {
+    background-color: #d0d0d0;
+    transform: translateY(2px);  
+    box-shadow: 0 2px #ccc;      
+  }
 </style>
 </html>
 

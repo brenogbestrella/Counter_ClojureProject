@@ -1,25 +1,36 @@
-(ns views.counter)
+(ns views.counter
+  (:require
+   [re-frame.core :as rf])) 
 
-(defn get-counter-value! [value]
-  (when-let [el (.getElementById js/document "counter")]
-    (set! (.-textContent el) (str value))))
-
-(defn fetch-counter []
+(defn fetch-counter! []
   (-> (js/fetch "http://localhost:3000/counter/count")
-      (.then (fn [resp]
-               (js/console.log "Resposta raw do fetch:" resp)
-               (.json resp)))
-      (.then (fn [data]
-               (js/console.log "Dados convertidos:" data)
-               (get-counter-value! (.-value data))))
-      (.catch (fn [err]
-                (js/console.error "Erro ao buscar contador:" err)
-                (get-counter-value! "error")))))
+      (.then (fn [response] (.json response)))
+      (.then (fn [data] (rf/dispatch [:initialize-with-value (.-value data)])))
+      (.catch (fn [err] (js/console.error "Error fetching counter value:" err)))))
 
-(defn ^:export -main []
-  (fetch-counter))
+(defn increment-counter! []
+  (-> (js/fetch "http://localhost:3000/counter/increment" #js {:method "PUT"})
+      (.finally (fn [_] (fetch-counter!)))  
+      (.catch (fn [err] (js/console.error "Error incrementing counter:" err)))))
 
-(set! js/window.onload -main)
+(defn reset-counter! []
+  (-> (js/fetch "http://localhost:3000/counter/reset" #js {:method "DELETE"})
+      (.finally (fn [] (fetch-counter!)))
+      (.catch (fn [err] (js/console.error "Error reseting counter:" err)))))
+      
+
+
+(defn counter-panel []
+  (let [counter @(rf/subscribe [:counter])]
+    [:div
+     [:h1 "COUNTER"]
+     [:p {:id "counter"} (str counter)]
+     [:div.buttons
+      [:button {:on-click increment-counter!} "Increment"]
+      [:button {:on-click reset-counter!} "Reset"]]]))
+
+
+
 
 ;; (defn -main []
 ;;   (println "Olá"))

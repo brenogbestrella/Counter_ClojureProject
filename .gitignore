@@ -22,3 +22,14 @@ out/
 *.iml
 .clj-kondo/
 .lsp/
+.shadow-cljs/builds/
+.shadow-cljs/jar-manifest/
+node_modules/
+public/js/cljs-runtime/
+.shadow-cljs/builds/
+.shadow-cljs/jar-manifest/
+.shadow-cljs/classpath.edn
+.shadow-cljs/server.pid
+.shadow-cljs/server.token
+public/js/main.js
+public/js/manifest.edn

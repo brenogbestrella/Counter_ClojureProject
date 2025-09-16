@@ -21,18 +21,18 @@
 (defn init-db! []
   (try
     (d/create-database client {:db-name "counters"})
-    (println "Banco de dados 'counters' criado.")
+    (println "Counters Db created.")
     
     (d/transact conn {:tx-data counters-schema})
-    (println "Esquema criado.")
+    (println "Created Schema.")
 
     (when-not (d/pull (d/db conn) [:counters/value] [:counters/id "main"])
       (d/transact conn {:tx-data [{:counters/id "main"
                                    :counters/value 0}]}))
-    (println "Valor inicial '0' criado.")
+    (println "Initial value defined to '0'.")
 
     (catch Exception e
-      (println "Banco de dados já existe ou erro na criação:" (.getMessage e)))))
+      (println "Db already exists or error while creating it:" (.getMessage e)))))
 
 (defn delete-database []
   (d/delete-database client {:db-name "counters"}))

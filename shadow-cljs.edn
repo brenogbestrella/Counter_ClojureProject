@@ -1,0 +1,13 @@
+{:source-paths ["src"]
+ :dependencies [[re-frame "1.4.2"]]
+ :builds {:app {:target :browser
+                :output-dir "public/js"
+                :asset-path "/js"
+                :modules {:main {:init-fn server.core/init}}
+                :devtools {:http-root "public"
+                           :http-port 9000}}}
+ :npm-deps {:react "18.2.0"
+            :react-dom "18.2.0"}
+ 
+ :install-deps true}
+
