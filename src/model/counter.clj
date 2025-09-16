@@ -1,4 +1,4 @@
-(ns datomic.counter
+(ns model.counter
   (:require [datomic.client.api :as d]))
 
 (defn get-counter-number!

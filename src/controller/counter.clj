@@ -1,6 +1,6 @@
-(ns datomic.controller
+(ns controller.counter
   (:require [datomic.client.api :as d]
-            [datomic.counter :as counter]
+            [model.counter :as counter]
             [datomic.config :as config]))
 
 (def conn config/conn)

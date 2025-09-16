@@ -1,7 +1,7 @@
 (ns routes.router
   (:require
    [cheshire.core :as json]
-   [datomic.controller :as controller]
+   [controller.counter :as controller]
    [datomic.config :as init]
    [reitit.ring :as ring]
    [ring.adapter.jetty :refer [run-jetty]]
