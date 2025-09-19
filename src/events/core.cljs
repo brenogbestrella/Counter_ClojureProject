@@ -5,8 +5,3 @@
  :initialize-with-value
  (fn [db [_ value]]
    (assoc db :counter value))) 
-
-(rf/reg-event-db
- :set-counter
- (fn [db [_ value]]
-   (assoc db :counter value)))
